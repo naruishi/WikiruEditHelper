@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>とのフラ includex生成 SSRからSRを複製</title>
+	<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+        <header>
+      <h1>SSRのincludexだけを作ってしまったページにSRを追加する</h1>
+    </header>
+    <textarea id="inputText"  placeholder="以下のようなSSR用の行からSR用の行を複製します。
+#region(SSR,close)
+#includex(テーブル/スキル・アビリティ/SSR,filter=^#sort|\|h$|\|f$|\|c$|亜紗花［|アサカ［|^}},titlestr=off)
+#endregion" ></textarea>
+    <br>
+    <button id="iClearButton">入力クリア</button></p>
+    <button onclick="processText()">処理を実行</button></p>
+    <button id="oClearButton">出力クリア</button></p>
+    <h3>結果:</h3>
+    <textarea id="outputText"></textarea>
+
+    <script>
+        function processText() {
+            const inputText = document.getElementById('inputText').value;
+            const lines = inputText.split('\n');
+            let outputText = '';
+
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i];
+                outputText += line + '\n';
+                if (line.startsWith('#endregion')) {
+                    const startRegion = lines[i - 2].replace('SSR', 'SR');
+                    const contentLine = lines[i - 1].replace('SSR', 'SR');
+                    outputText += startRegion + '\n';
+                    outputText += contentLine + '\n';
+                    outputText += '#endregion\n';
+                }
+            }
+
+            document.getElementById('outputText').value = outputText;
+        }
+        // クリアボタンの機能
+        document.getElementById("iClearButton").addEventListener("click", function() {
+            document.getElementById("inputText").value = "";
+        });
+
+        document.getElementById("oClearButton").addEventListener("click", function() {
+            document.getElementById("outputText").value = "";
+        });
+    </script>
+</body>
+</html>

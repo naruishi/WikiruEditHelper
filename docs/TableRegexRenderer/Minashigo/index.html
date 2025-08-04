@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ミナシゴノシゴトwikiアイコン一覧一括作成</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <header>
+        <h1>正規表現のキャプチャーグループ付きアイコン一覧を出力するスクリプト</h1>
+    </header>
+	<main>
+		キャラ性能比較から、正規表現でマッチングするユニットのアイコンをflex関数で出力します。<br>
+		既に作成されているアイコンは一度削除してから再度作成するため、手動で取り除く必要はありません。<br>
+		<div id="dropArea">ここにキャラ性能比較のtxtファイルをドラッグ＆ドロップ</div>
+		<button id="openPage1">練習用砂場</button> 
+		<button id="openPage2">キャラ性能比較</button> 
+		<button id="openPage3">武器早見表</button>
+		<button id="openPage4">戦神性能比較</button>
+
+		</p>
+		<input type="text" id="tableName1" style="width : 300px;" value="テーブル/キャラ性能比較">
+		<input type="text" id="tableName2" style="width : 300px;" value="テーブル/武器早見表">
+		<input type="text" id="tableName3" style="width : 300px;" value="テーブル/戦神性能比較">
+
+	</p>
+		<textarea id="table1" placeholder="テーブル/キャラ性能比較"></textarea></p>
+		<textarea id="table2" placeholder="テーブル/武器早見表"></textarea></p>
+		<textarea id="table3" placeholder="テーブル/戦神性能比較"></textarea></p>
+		<textarea id="article" placeholder="wikiの記事(見出し、#region、#includex、#endregionのブロック必須)"></textarea></p>
+
+		アイコン最大出力数
+		<input type="number" id="inputNumber1" min="1" step="1" value="99" style="width : 50px;"> 
+		コメントを出力<input type="checkbox" id="checkBox1" checked><br>
+		<button id="execute">実行</button></p>
+
+		<textarea id="output" ></textarea>
+	</main>
+	<script src="./index.js"></script>
+</body>
+</html>
