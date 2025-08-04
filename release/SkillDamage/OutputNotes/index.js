@@ -1,5 +1,0 @@
-"use strict";function u(t){let c=t.split(`
-`),i="~\u5099\u8003|"+`
-`;return c.forEach(n=>{let e=[];(n.match("\u7DE8\u6210\u3059\u308B\u3068")||n.match("\u3044\u308B\u3068"))&&e.push("\u7DE8\u6210\u6761\u4EF6"),n.match("\u88C5\u5099")&&e.push("\u88C5\u5099\u6761\u4EF6");let a=n.matchAll(/敵(?<number>[1-5]体|全体|単体)に(?:自身の)?ATK\d+%.[0-9]+.(?:の)?先制攻撃/g);for(let s of a)e.push(s.groups?.number+"\u5148\u5236\u653B\u6483");let r=n.matchAll(/敵(?<number>[1-5]体|全体|単体)に(?:&br;)?(?:[1-9]回)?(自身の)?ATK\d+[%％].[0-9]+.(?:の)?追/g);for(let s of r)e.push(s.groups?.number+"\u8FFD\u6483");[...n.matchAll(/sortabletable|mistyrose|~画像|}}|^$/g)].length==0&&(i+=e.join("&br;")+`|
-`)}),i}var l=document.getElementById("inputText");if(!l)throw new Error("textarea with ID 'inputText' not found.");var o=document.getElementById("outputText");if(!o)throw new Error("textarea with ID 'outputText' not found.");document.addEventListener("DOMContentLoaded",()=>{let t=document.getElementById("execute");t&&t.addEventListener("click",f)});function f(){let t=l.value;o.value=u(t)}
-//# sourceMappingURL=index.js.map

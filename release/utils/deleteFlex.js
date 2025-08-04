@@ -1,2 +1,0 @@
-"use strict";function e(t){return t.replace(/#flex\(flex-start\)\{\{[\s\S]*?\}\}/g,"")}var n=document.getElementById("inputText");if(!n)throw new Error("textarea with ID 'inputA' not found.");var r=document.getElementById("outputText");if(!r)throw new Error("textarea with ID 'inputA' not found.");document.addEventListener("DOMContentLoaded",()=>{let t=document.getElementById("execute");t&&t.addEventListener("click",i)});function i(){r.value=e(n.value)}
-//# sourceMappingURL=deleteFlex.js.map
