@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>とのフラアビリティバフ計算スクリプト</title>
+  </head>
+  <body>
+    <h3>入力</h3>
+    ・戦闘中、常時発動する攻撃力・スキル威力UPの数値を抽出します。<br />
+    <button onclick="openPage2()">テーブル/スキル・アビリティ(SSR)</button>
+    <button onclick="openPage3()">テーブル/スキル・アビリティ(SR)</button>
+    <br />
+    <textarea
+      id="inputText"
+      rows="6"
+      cols="100"
+      placeholder="アビリティ/戦闘中/SSR"
+    ></textarea>
+    <br /><br />
+    <button id="execute">実行</button>
+    <br /><br />
+    <textarea id="outputText" rows="6" cols="100" readonly></textarea>
+    <script src="./index.js"></script>
+  </body>
+</html>

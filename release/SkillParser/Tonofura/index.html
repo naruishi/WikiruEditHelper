@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>とのフラアビリティパーサー</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+  </head>
+  <body>
+    <h1>とのフラの特定シチュエーションアビリティを抽出して整理しCSV出力</h1>
+		<button id="openPage1">スキル効果別一覧</button> <button id="openPage2">テーブル/スキル・アビリティ/SSR</button> <button id="openPage3">テーブル/スキル・アビリティ/SR</button>
+    <textarea id="inputText" placeholder="スキル・アビリティ一覧"></textarea></p>
+    シチュエーション指定
+    <input
+      type="text"
+      id="situation"
+      size="64"
+      value=""
+    />
+    <br />
+  <label>プリセット：</label>
+  <select id="comboBox">
+    <option value="">-- 選択してください --</option>
+      <option value="(^|&br;)(?<situation>(戦闘中|下郎と一緒にいる時|冒険中)(､)?)">戦闘中|下郎と一緒にいる時|冒険中</option>
+      <option value="(^|&br;)(?<situation>(開戦時)(､)?)">開戦時</option>
+      <option value="(^|&br;)(?<situation>(WAVE開始時)(､)?)">WAVE開始時</option>
+      <option value="(^|&br;)(?<situation>((味方)?ターン開始時)(､)?)">ターン開始時</option>
+      <option value="(^|&br;)(?<situation>(敵ターン開始時)(､)?)">敵ターン開始時</option>
+      <option value="(^|&br;)(?<situation>((味方)?ターン終了時)(､)?)">ターン終了時</option>
+      <option value="(^|&br;)(?<situation>(敵ターン終了時)(､)?)">敵ターン終了時</option>
+        <option value="(^|&br;)(?<situation>([0-9]+ターンおきに)(､)?)">ターンおきに</option>
+      <option value="(^|&br;)(?<situation>(攻撃時)(､)?)">攻撃時</option>
+      <option value="(^|&br;)(?<situation>(自身スキル使用時)(､)?)">自身スキル使用時</option>
+      <option value="(^|&br;)(?<situation>(クリティカル発生時)(､)?)">クリティカル発生時</option>
+      <option value="(^|&br;)(?<situation>(被ダメージ時)(､)?)">被ダメージ時</option>
+      <option value="(^|&br;)(?<situation>(味方(が)?スキル使用時|味方がスキルを使用するたび)(､)?)">味方スキル使用時/味方がスキルを使うたび</option>
+      <option value="(^|&br;)(?<situation>(敵スキル使用時)(､)?)">敵スキル使用時</option>
+      <option value="(^|&br;)(?<situation>(被全体攻撃|全体攻撃被弾時)(､)?)">被全体攻撃/全体攻撃被弾時</option>
+      <option value="(^|&br;)(?<situation>(敵を倒した|討伐|撃破時)(､)?)">敵を倒した/討伐/撃破時</option>
+      <option value="(^|&br;)(?<situation>(スキルゲージMAX時)(､)?)">スキルゲージMAX時</option>
+      <option value="(^|&br;)(?<situation>(スキル発動時)(､)?)">スキル発動時</option>
+      <option value="(^|&br;)(?<situation>(自身のHP)(､)?)">自身のHP</option>
+      <option value="(^|&br;)(?<situation>(HP[0-9]+%以上)(､)?)">HPn%以上</option>
+      <option value="(^|&br;)(?<situation>(HP[0-9]+%以下)(､)?)">HPn%以下</option>
+  </select></p>
+
+    <button id="execute">変換</button><br />
+    <textarea id="outputText" placeholder="出力"></textarea><br />
+    <script src="./index.js"></script>
+  </body>
+</html>

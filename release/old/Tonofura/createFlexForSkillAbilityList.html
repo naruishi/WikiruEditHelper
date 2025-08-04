@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>とのフラ flex生成 ユニット名</title>
+	<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <h1>ユニット名のリストから、flex関数でアイコン一覧を生成</h1>
+    </header>
+	<main>
+	画像ファイル名は"ユニット名_icon.png"の型式である必要があります。
+	<textarea id="inputText" placeholder="入力：ユニット名(例：亜紗花［仮初の花］)のリスト"></textarea></p>
+	<button onclick="convertText()">変換</button></p>
+	<textarea id="outputText" readonly　placeholder=”出力"></textarea>
+	</main>
+	<script src="../js/wikiruEdit.js"></script>	
+	<script src="../js/flexRebuild/tonofuraWiki.js"></script>	
+<script>
+	function convertText() {
+		// 入力値取得
+		let input = document.getElementById("inputText").value;
+
+		// 出力テキストボックスに反映
+		document.getElementById("outputText").value = createFlexBlock(input, 99, "");
+	}
+
+</script>
+</body>
+</html>

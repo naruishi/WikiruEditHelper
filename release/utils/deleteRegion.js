@@ -1,0 +1,2 @@
+"use strict";function e(t){return t.replace(/#region[\s\S]*?#endregion/g,"")}var n=document.getElementById("inputText");if(!n)throw new Error("textarea with ID 'inputText' not found.");var r=document.getElementById("outputText");if(!r)throw new Error("textarea with ID 'outputText' not found.");document.addEventListener("DOMContentLoaded",()=>{let t=document.getElementById("execute");t&&t.addEventListener("click",i)});function i(){r.value=e(n.value)}
+//# sourceMappingURL=deleteRegion.js.map

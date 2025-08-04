@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>とのフラユニット性能CSV化</title>
+	<link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <header>
+        <h1>ユニット性能CSV化スクリプト</h1>
+    </header>
+	<main>
+		wikiのユニット詳細ページから基本情報とスキル・アビリティを一行のテーブル型式で抽出します。<br>
+		入力をクリアし別のページをペーストすることで出力に追記されていきます。<br>
+		ガチャの種類の判別はできませんので手作業で修正してください。<br>
+		<div id="dropArea">wikiruソースを保存したtxtファイルをドラッグ＆ドロップ</div>
+		<button id="openPage1">キャラクター一覧</button>
+		<textarea id="inputField" placeholder="入力：ユニット詳細ページのwikiruソース"></textarea>
+		<button id="iClearButton">入力クリア</button></p>
+
+		<textarea id="outputField" readonly placeholder="出力：基本情報、スキル、アビリティ1、アビリティ2、サポートアビリティ、覚醒/トラストアビリティ"></textarea>
+		<button id="oClearButton">出力クリア</button></p>
+	</main>
+	<script src="./extractUnitDataTonofura.js"></script>	
+</body>
+</html>

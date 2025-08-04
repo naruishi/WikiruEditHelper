@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>とのフラ includex生成 スキル～アビリティ列</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h1>スキル、アビ1、アビ2、サポアビ、覚醒/トラストアビの各項目を一括作成</h1>
+    <input
+      id="inputBox"
+      type="text"
+      style="width: 95%"
+      placeholder="フィルター条件をペーストすることで、スキル、アビ1、アビ2、サポアビ、覚醒/トラストアビの各項目を一括作成します。"
+    />
+    <br />
+    <input id="heading" type="text" size="128" placeholder="見出しの文字列" />
+    <br />
+    見出しの深さ<input
+      type="number"
+      min="1"
+      max="3"
+      step="1"
+      value="2"
+      id="indent"
+      style="width: 50px"
+    />
+    <br />
+    SRを含める<input type="checkbox" id="rarity" />
+    <br />
+    <button id="generate" onclick="execute()">生成</button>
+    <br />
+    <textarea
+      id="outputBox"
+      placeholder="置換結果がここに表示されます"
+    ></textarea>
+    <script src="js/wikiruEdit.js"></script>
+    <script src="js/flexRebuild/tonofuraWiki.js"></script>
+    <script>
+      function execute() {
+        // 元のテキストボックスの内容を取得
+        const inputText = document.getElementById("inputBox").value;
+        const heading = document.getElementById("heading").value;
+        const isCreateSR = document.getElementById("rarity").checked;
+        const indent = document.getElementById("indent").value;
+
+        // 出力をテキストボックスに表示
+        document.getElementById("outputBox").value = createSkillAbilityIncludex(
+          inputText,
+          heading,
+          isCreateSR,
+          indent
+        );
+      }
+    </script>
+  </body>
+</html>

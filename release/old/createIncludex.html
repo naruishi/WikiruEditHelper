@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>とのフラ includex生成 キャラクター別</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <h1>キャラクター名で抽出するincludex作成時に使ったもの</h1>
+    <textarea
+      id="inputBox"
+      placeholder="キャラクター名(≠ユニット名)をペーストすることで、以下のテンプレートを生成します。
+**キャラ名
+#region(SSR,close)
+#includex(テーブル/スキル・アビリティ/SSR,filter=^#sort|\\|h$|\\|f$|\\|c$|キャラ名［|^}},titlestr=off)
+#endregion`"
+    ></textarea>
+    <br />
+    <button id="generate">生成</button>
+    <br />
+    <textarea
+      id="outputBox"
+      placeholder="置換結果がここに表示されます"
+    ></textarea>
+
+    <script>
+      document
+        .getElementById("generate")
+        .addEventListener("click", function () {
+          // 元のテキストボックスの内容を取得
+          const inputText = document.getElementById("inputBox").value;
+
+          // 各行を分割
+          const lines = inputText.split("\n");
+
+          // テンプレート
+          const template = `
+**input
+#region(SSR,close)
+#includex(テーブル/スキル・アビリティ/SSR,filter=^#sort|\\|h$|\\|f$|\\|c$|input［|^}},titlestr=off)
+#endregion`;
+
+          // 結果を格納する変数
+          let output = "";
+
+          // 各行をテンプレートに置換して結果を生成
+          lines.forEach((line) => {
+            const replaced = template.replace(/input/g, line);
+            output += replaced + "\n";
+          });
+
+          // 出力をテキストボックスに表示
+          document.getElementById("outputBox").value = output.trim();
+        });
+    </script>
+  </body>
+</html>

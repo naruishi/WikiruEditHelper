@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>とのフラ includex生成 汎用</title>
+	<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>とのフラwikiのスキル効果別一覧用includexを一括作成。</h1>
+    <textarea id="inputBox" placeholder="フィルター条件をペーストすることで、以下のテンプレートを生成します。
+***見出し
+#region(SSR,close)
+#includex(テーブル/スキル・アビリティ/SSR,filter=^#sort|\\|h$|\\|f$|\\|c$|フィルター条件|^}},titlestr=off)
+#endregion`"></textarea>
+    <br>
+    SRを含める<input type="checkbox" id="rarity" >
+    <br>
+    見出しの深さ<input type="number" min="1" max="3" step="1" value="3" id="indent" style="width : 50px;">
+    <br>
+    見出しを目次に含めない(*ではなく#shadowheaderを使う)<input type="checkbox" id="isShadowHeader" >
+    <br>
+    <input type="text" id="headerText" size="64"  placeholder="見出し"><br>
+
+    <button id="generate" onclick="execute()"">生成</button>
+    <br>
+    <textarea id="outputBox" placeholder="置換結果がここに表示されます"></textarea>
+    <script src="../js/wikiruEdit.js"></script>	
+    <script src="../js/flexRebuild/tonofuraWiki.js"></script>	
+    <script>
+	function execute() {
+	    // 元のテキストボックスの内容を取得
+	    const inputText = document.getElementById('inputBox').value;
+        const isShadowHeader = document.getElementById('isShadowHeader').checked;
+        const headerText = document.getElementById('headerText').value;
+        const indent = document.getElementById('indent').value;
+        const isCreateSR = document.getElementById('rarity').checked;
+
+
+	    // 出力をテキストボックスに表示
+	    document.getElementById('outputBox').value = createIncludex(inputText, isShadowHeader, headerText, indent, isCreateSR);
+	}
+    </script>
+</body>
+</html>

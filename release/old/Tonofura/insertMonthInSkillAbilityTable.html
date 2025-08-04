@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>とのフラ ガチャ種別の列に実装月を挿入</title>
+    <link rel="stylesheet" href="../../css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>
+        スキル・アビリティ一覧のガチャ種別の後に実装月を挿入した時に使ったスクリプト
+      </h1>
+    </header>
+    <textarea
+      id="skillAbilityCsv"
+      placeholder="スキル・アビリティ一覧"
+    ></textarea
+    ><br />
+    <textarea
+      id="unitNames"
+      placeholder="実装月を挿入するユニット名のリスト"
+    ></textarea
+    ><br />
+    実装月(1～12)<br />
+    <input
+      type="number"
+      min="1"
+      max="12"
+      step="1"
+      value="1"
+      id="month"
+      style="width: 50px"
+    /><br />
+    <button onclick="execute()">変換</button><br />
+    <textarea id="outputBox" placeholder="出力"></textarea><br />
+    <button onclick="pastToInput()">出力を入力にコピー</button><br />
+    <script src="../js/wikiruEdit.js"></script>
+    <script src="../js/flexRebuild/tonofuraWiki.js"></script>
+    <script>
+      // 実装月を挿入
+      function execute() {
+        const table = document.getElementById("skillAbilityCsv").value;
+        const searchColumnIndex = 2;
+        const searchWords = document
+          .getElementById("unitNames")
+          .value.split("\n");
+        const appendColumnIndex = 4;
+        const appendWord = "." + document.getElementById("month").value;
+
+        document.getElementById("outputBox").value = appendTextToTable(
+          table,
+          searchColumnIndex,
+          searchWords,
+          appendColumnIndex,
+          appendWord
+        );
+      }
+
+      // 出力を入力にペーストする
+      function pastToInput() {
+        const source = document.getElementById("outputBox").value;
+        document.getElementById("skillAbilityCsv").value = source;
+        // 使用済みのユニット名リストを消去
+        document.getElementById("unitNames").value = "";
+        document.getElementById("outputBox").value = "";
+        // 月を減算
+        const month = document.getElementById("month").value;
+        if (month == 1) {
+          document.getElementById("month").value = 12;
+        } else {
+          document.getElementById("month").value -= 1;
+        }
+      }
+    </script>
+  </body>
+</html>
